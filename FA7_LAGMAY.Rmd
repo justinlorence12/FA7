@@ -1,0 +1,111 @@
+---
+title: "FA7_LAGMAY"
+output: word_document
+date: "2023-04-19"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+#FA7
+
+#1 
+#A
+#probability of memory stick scrapped
+#the length interval must be computed first since they are uniformly distributed between 2 and 12
+
+L = 12 - 2 #length interval between minimum and maximum values of memory stick lengths
+P(memory stick) = 2/L #equation for finding the probability of a memory stick being scrapped
+
+#B
+#use set seed as your random number generator
+#n = 50 to generate 50 random values as specified and min = 2 for minimum value and max = 12 for maximum value of the possible value for any of 50 randon numbers generated
+#var for finding the variance of stimulated values
+#hist as histogram function for stimulated values
+#mean for finding the mean of stimulated values
+
+```{r}
+
+#A
+L <- 12 - 2 
+P_memory_stick <- 2/L 
+P_memory_stick 
+```
+
+```{r}
+#B
+set.seed(123)
+memory_stick <- runif(n=50, min = 2, max = 12)
+hist(memory_stick)
+
+var(memory_stick)
+
+mean(memory_stick)
+
+```
+
+#2
+#A
+#Show that, for this to be a genuine probability density. b = 0.15
+#B
+#Find the probability that the measurement of the current exceeds 3.
+#C
+#Find E(X)
+
+```{r}
+
+#A
+
+b <- 0.15
+pdfA <- function(x) {0.025 * x + b}
+
+integA <- integrate(pdf, min = 2, min = 6)
+
+genuine <- integA$value
+genuine
+
+#B
+
+pdfB <- function(x) {0.025 * x + 0.15}
+
+integB <- integrate(pdfB, 3, 6)
+
+Prob_3 <- IntegB$value
+Prob_3
+
+#C
+
+pdfC <- function(x) {0.025*x + 0.15}
+
+min_Value <- 2
+max_Value <- 6
+
+integrand <- function(x) {x * pdfC(x)}
+E_X <- integrate(integrand, min_Value, max_Value)$value
+E_X
+```
+
+#3
+# Define the range of uniform distribution which is min and max then min is -pi and max is pi
+# Calculate Prob_0 and Prob_Pi by using the given formula in the book 
+
+```{r}
+
+min_ud <- -pi
+max_ud <- pi
+
+Prob_0 <- punif(0, min_ud, max_ud)
+Prob_0
+
+Prob_Pi <- punif(pi/2, min_ud, max_ud)
+Prob_Pi 
+
+```
