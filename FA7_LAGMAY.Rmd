@@ -67,7 +67,7 @@ mean(memory_stick)
 b <- 0.15
 pdfA <- function(x) {0.025 * x + b}
 
-integA <- integrate(pdf, min = 2, min = 6)
+integA <- integrate(pdfA, min = 2, min = 6)
 
 genuine <- integA$value
 genuine
